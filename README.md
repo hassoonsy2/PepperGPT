@@ -1,6 +1,8 @@
 # Enhancing Visitor Experience with Pepper the Robot 
 
-![R(1).JPG]
+
+
+![Peper](R(1).JPG)
 
 ## Description:
 Welcome to the Hublab project repository! This innovative project is centered around integrating Pepper, a friendly humanoid robot, into the HUB-lab environment to serve as an interactive assistant for visitors. The HUB-lab, located within the HU library, is a dynamic space that offers access to cutting-edge technologies such as Virtual Reality, Robotics, Gamification, and Artificial Intelligence.
