@@ -19,6 +19,9 @@ Project Goals:
 
 
 --------------------------------------------
-## Research Plan 
+## Importent Links :
 
-Url : https://www.overleaf.com/6338562289yxpdhtvhmmjq#f09f90
+- Resarch plan  : https://www.overleaf.com/6338562289yxpdhtvhmmjq#f09f90
+- Current \& Future Customer Journey Map "MAP" : https://www.canva.com/design/DAF82leUJ1A/O19ehrI2XOTL2FS1DScvvQ/edit
+- Design Methods for Social Robotics Document : https://www.overleaf.com/4988576184hwtjqsymjzpg#a22a78
+- VPC : https://www.canva.com/design/DAF8y5bZGHY/lTmAirM6dRAS8QF9V8TFSw/edit  
