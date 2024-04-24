@@ -2,7 +2,7 @@
 
 from oaichat.oaiserver import OaiServer
 from optparse import OptionParser
-
+from tinyllama.tinyllamaserver import TinyLlamaServer
 
 parser = OptionParser()
 parser.add_option("--prompt",
@@ -12,25 +12,21 @@ parser.set_defaults(prompt='pepper')
   
 if __name__ == '__main__':
     (opts, args_) = parser.parse_args()
-    server = OaiServer(user='User 1',prompt=opts.prompt + '.prompt')
-    server.start()
-    try: 
-        print('Type an input message to test your chatbot. Type "history" to print dialogue history or "exit" to quit the server.')
+    server = TinyLlamaServer(user='User 1',prompt=opts.prompt + '.prompt')
+    try:
+        server.start()
         while True:
             s = input('> ')
-            if s == 'exit':
+            if s.lower() == 'exit':
                 break
-            elif s == 'history':
-                for line in server.history: print(line)
-            elif s == 'reset':
-                server.reset()
-                print('Dialogue history reset.')
-            elif s:
-                print(server.respond(s).getText())
-    except KeyboardInterrupt:
-        pass
+            elif s.lower() == 'history':
+                for item in server.history:
+                    print(f"{item['role']}: {item['content']}")
+            else:
+                response_object = server.respond(s)
+                print(response_object.getText())
     finally:
         server.stop()
-    print('GPT Server closed.')
+
 
     

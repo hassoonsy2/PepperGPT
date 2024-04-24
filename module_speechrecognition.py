@@ -16,6 +16,7 @@
 
 ROBOT_IP = '192.168.1.140'  # default, for running on Pepper
 ROBOT_PORT = 9559
+# ltfc3fdb42c2a6.local.:9559
 
 import sys, time
 import naoqi

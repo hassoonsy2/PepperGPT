@@ -3,7 +3,8 @@
 
 ROBOT_PORT = 9559 # Robot
 ROBOT_IP = "192.168.1.140" # Pepper default
-
+#ltfc3fdb42c2a6.local
+#192.168.1.140
 AUTODEC = True
 
 from optparse import OptionParser
@@ -15,9 +16,10 @@ import codecs
 from naoqi import ALProxy
 
 participantId = raw_input('Participant ID: ')
+from tinyllama.client import TinyLlamaClient
 
 from oaichat.oaiclient import OaiClient
-chatbot = OaiClient(user=participantId)
+chatbot = TinyLlamaClient(user=participantId)
 chatbot.reset()
 
 class DialogueSpeechReceiverModule(naoqi.ALModule):
@@ -99,6 +101,8 @@ class DialogueSpeechReceiverModule(naoqi.ALModule):
         self.log.write('ANS: ' + answer + '\n')
         self.aup.say(answer)
         self.react(answer)
+
+
         #time.sleep(2)
         if self.autodec:
             print("starting service speech-rec again")
@@ -154,9 +158,9 @@ def main():
         p.exit()  # kill previous instance
     except:
         pass
-
-    #AutonomousLife = ALProxy('ALAutonomousLife')
-    #AutonomousLife.setState('solitary')
+    # ToDO: try wtih solitary state
+    # AutonomousLife = ALProxy('ALAutonomousLife')
+    # AutonomousLife.setState('solitary')
 
     # Reinstantiate module
 

@@ -37,6 +37,8 @@ class OaiClient:
     def respond(self,s):
         return OaiResponse(self.send({'input':s})).getText()
 
+
+
     def send(self,o):
         o['time'] = datetime.now().isoformat()
         if self.log: 
@@ -57,7 +59,7 @@ class OaiClient:
             print('Error resetting dialoge history')
 
 if __name__ == '__main__':
-    client = OaiClient(('Your name is Pepper.','We are currently at the Interaction Lab in Skovde, Sweden.','You are a robot.'))
+    client = OaiClient(('Your name is Pepper.','We are currently at the Hub Lab at HU.','You are a robot.'))
     while True:
         s = raw_input('> ')
         if s:
