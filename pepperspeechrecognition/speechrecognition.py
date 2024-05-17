@@ -63,7 +63,7 @@ class SpeechRecognitionModule(naoqi.ALModule):
 
             # flag to indicate if auto speech detection is enabled
             self.isAutoDetectionEnabled = False
-            self.autoDetectionThreshold = 12 # TODO: find a default value that works fine so we don't need to calibrate every time
+            self.autoDetectionThreshold = 4 # TODO: find a default value that works fine so we don't need to calibrate every time
 
             # flag to indicate if we are calibrating
             self.isCalibrating = False

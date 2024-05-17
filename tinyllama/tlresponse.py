@@ -6,22 +6,23 @@ import json
 class TinyLlamaResponse:
     def __init__(self, response):
         """Initialize with a JSON response from TinyLlama."""
-        self.response = json.loads(response) if isinstance(response, str) else response
+        self.json = json.loads(response) if isinstance(response,str) else response
+        # self.response = json.loads(response) if isinstance(response, str) else response
 
-    def is_flagged(self):
-        """Simulate a check for flagged content based on a response field."""
-        # This assumes there's a 'flagged' field in the response dict
-        return self.response.get('flagged', False)
+    def flagged(self):
+        return hasattr(self,'moderation') and self.moderation['results'][0]['flagged']
 
     def getText(self):
-        """Extract text from the response, checking for flagged content."""
-        if self.is_flagged():
+        if self.flagged():
             return "This conversation is going nowhere."
         else:
-            # Assuming response structure has a 'text' or similar field
-            return self.response.get('text', '').strip()
+            print(self.json, 'its json')
+            return self.json['message']['content'].strip()
 
-    def flagged_response(self):
-        """Provide a standard response if the content is flagged."""
-        if self.is_flagged():
+    def flaggedResponse(self):
+        #categories = self.json['results'][0]['categories']
+        #for key,val in categories.items():
+        #  if val:
+        #    return self.responses[key]
+        if self.flagged():
             return "This conversation is going nowhere."

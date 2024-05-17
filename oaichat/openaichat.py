@@ -44,7 +44,7 @@ class OaiChat:
     self.history.append({'role':'user','content':inputText})
     #print(self.history)
     response = self.client.chat.completions.create(
-      model="gpt-3.5-turbo-1106",
+      model="gpt-4o-2024-05-13",
       #response_format={ "type": "json_object" },
       #user=self.user,
       messages=self.history,
@@ -58,9 +58,11 @@ class OaiChat:
     #print('Moderation:',self.moderation)
     print(response.choices[0].message.content)
     r = OaiResponse(response.model_dump_json())
+    print("its R",response.model_dump_json() , 'r')
 
     self.history.append({'role':'assistant','content':r.getText()})
     print('Request delay',datetime.now()-start)
+    print(r , 'its r 2')
     return r
 
   def loadPrompt(self,promptFile):
@@ -75,7 +77,7 @@ class OaiChat:
     return prompt
     
 if __name__ == '__main__':
-  chat = OaiChat()
+  chat = OaiChat(user='OaiChat')
 
   while True:
     try:

@@ -1,30 +1,30 @@
 import ollama
+from ollama import Client
 import os
-import json
+
 from datetime import datetime
 from tinyllama.tlresponse import TinyLlamaResponse
+import os, sys, codecs, json
+import dotenv
+dotenv.load_dotenv()
 
+if sys.version_info[0] < 3:
+    raise ImportError('LLAMA Chat requires Python 3')
+
+
+# Todo : fix the straming issue and the logging !
 class TinyLlamaModel:
-    def __init__(self, user, prompt_file=None):
-        self.user = user
-        self.history = self.loadPrompt(prompt_file or 'tinyllama.prompt')
+    def __init__(self,user,prompt=None):
+        self.log = None
+        self.reset(user,prompt)
+        self.client = Client(host='http://localhost:11434')
 
-    def loadPrompt(self, prompt_file):
-        """Load initial conversation prompts from a file."""
-        prompt_path = prompt_file if os.path.isfile(prompt_file) else os.path.join(os.path.dirname(__file__), prompt_file)
-        prompts = []
-        if os.path.isfile(prompt_path):
-            with open(prompt_path, 'r', encoding='utf-8') as file:
-                content = file.read()
-                prompts.append({'role': 'system', 'content': content})
-        else:
-            print(f'WARNING: Unable to locate prompt file {prompt_file}')
-        return prompts
 
-    def reset(self, user, prompt=None):
+    def reset(self,user,prompt=None):
         self.user = user
-        self.history = self.loadPrompt(prompt or os.getenv('OPENAI_PROMPTFILE'))
+        self.history = self.loadPrompt(prompt or os.getenv('LLAMA_PROMPTFILE'))
         self.resetRequestLog()
+
 
     def resetRequestLog(self):
         # if (self.log): self.log.close()
@@ -35,43 +35,53 @@ class TinyLlamaModel:
         # print('Logging requests to',log)
         pass
 
-    def respond(self, input_text):
-        self.history.append({'role': 'user', 'content': input_text})
-        response_content = ''
+    def loadPrompt(self,promptFile):
+        promptFile = promptFile or 'tinyllama.prompt'
+        promptPath = promptFile if os.path.isfile(promptFile) else os.path.join(os.path.dirname(__file__),promptFile)
+        prompt = [] # [{"role": "system", "content": "You are a helpful robot designed to output JSON."}]
+        if not os.path.isfile(promptPath):
+            print('WARNING: Unable to locate tinyllama prompt file',promptFile)
+        else:
+            with codecs.open(promptPath,encoding='utf-8') as f:
+                prompt.append({'role':'system','content':f.read()})
+        return prompt
 
-        try:
-            stream = ollama.chat(model='tinyllama', messages=self.history, stream=True)
-            for chunk in stream:
-                response_content += chunk['message']['content']
-                if chunk.get('done', False):
-                    break
-        except Exception as e:
-            print(f"Error during model response generation: {str(e)}")
-            response_content = "Sorry, I couldn't process that due to an error."
 
-        # Ensure TinyLlamaResponse is returned regardless of path taken
-        final_response = TinyLlamaResponse(json.dumps({'text': response_content}))
 
-        self.history.append({'role': 'assistant', 'content': response_content})
+    def respond(self, inputText):
+        start = datetime.now()
+        self.moderation = None
+        #moderator = Thread(target=self.getModeration,args=(inputText,))
+        #moderator.start()
+        self.history.append({'role':'user','content':inputText})
+        response = self.client.chat(
+        model="tinyllama",
+        messages=self.history,
+        options = {'num_ctx': 20,'temperature' : 0.9,'num_predict':30},
 
-        return final_response
+        )
+        print(response['message']['content'])
+        print(response)
+        r = TinyLlamaResponse(response)
+
+        self.history.append({'role':'assistant','content':r.getText()})
+        print('Request delay',datetime.now()-start)
+        return r
 
 
 # Example usage
 if __name__ == '__main__':
 
+    chat = TinyLlamaModel(user='TinyLlama')
 
-    model = TinyLlamaModel(user='Pepper', prompt_file='tinyllama.prompt')
-    print("TinyLlamaModel initialized. Type something to chat!")
     while True:
         try:
-            input_text = input('> ')
-            if input_text.strip():
-                response = model.respond(input_text)
-                print(response)
-            else:
-                print("Restarting conversation.")
-                model.reset()  # Optionally reset the conversation
+            s = input('> ')
         except KeyboardInterrupt:
-            print("\nExiting TinyLlamaModel chat.")
             break
+        if s:
+            print(chat.history)
+            print(chat.respond(s).getText())
+        else:
+            break
+    print('Closing tinyllama Server')
