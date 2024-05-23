@@ -16,7 +16,6 @@
 
 ROBOT_IP = '192.168.1.140'  # default, for running on Pepper
 ROBOT_PORT = 9559
-# ltfc3fdb42c2a6.local.:9559
 
 import sys, time
 import naoqi
@@ -29,12 +28,12 @@ def main():
     """
     parser = OptionParser()
     parser.add_option("--pip",
-        help="Parent broker port. The IP address or your robot",
-        dest="pip")
+                      help="Parent broker port. The IP address or your robot",
+                      dest="pip")
     parser.add_option("--pport",
-        help="Parent broker port. The port NAOqi is listening to",
-        dest="pport",
-        type="int")
+                      help="Parent broker port. The port NAOqi is listening to",
+                      dest="pport",
+                      type="int")
     parser.set_defaults(
         pip=ROBOT_IP,
         pport=ROBOT_PORT)
@@ -47,10 +46,10 @@ def main():
     # NAOqi modules and subscribe to other modules
     # The broker must stay alive until the program exists
     myBroker = naoqi.ALBroker("myBroker",
-       "0.0.0.0",   # listen to anyone
-       0,           # find a free port and use it
-       pip,         # parent broker IP
-       pport)       # parent broker port
+                              "0.0.0.0",   # listen to anyone
+                              0,           # find a free port and use it
+                              pip,         # parent broker IP
+                              pport)       # parent broker port
 
     try:
         p = ALProxy("SpeechRecognition")

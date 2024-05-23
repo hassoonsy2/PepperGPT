@@ -19,10 +19,10 @@ participantId = raw_input('Participant ID: ')
 from tinyllama.client import TinyLlamaClient
 
 from oaichat.oaiclient import OaiClient
-# chatbot = TinyLlamaClient(user=participantId) or OaiClient(user=participantId)
+chatbot = TinyLlamaClient(user=participantId) or OaiClient(user=participantId)
 # # chatbot = OaiClient(user=participantId)
-# chatbot.reset()
-#
+chatbot.reset()
+
 # class DialogueSpeechReceiverModule(naoqi.ALModule):
 #     """
 #     Use this object to get call back from the ALMemory of the naoqi world.

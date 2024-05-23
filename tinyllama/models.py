@@ -54,10 +54,11 @@ class TinyLlamaModel:
         #moderator = Thread(target=self.getModeration,args=(inputText,))
         #moderator.start()
         self.history.append({'role':'user','content':inputText})
+
         response = self.client.chat(
-        model="tinyllama",
+        model="phi3:mini",
         messages=self.history,
-        options = {'num_ctx': 20,'temperature' : 0.9,'num_predict':30},
+        options = {'temperature' : 0.7,'num_predict':50},
 
         )
         print(response['message']['content'])
