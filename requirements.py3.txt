@@ -1,4 +1,5 @@
 # PepperChat Python2 Requirements
 python-dotenv
 zmq
-openai
+openai 
+ollama
