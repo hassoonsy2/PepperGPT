@@ -25,7 +25,7 @@ SAMPLE_RATE = 48000         # Hz, be careful changing this, both google and Naoq
 CALIBRATION_DURATION = 4    # seconds, timespan during which calibration is performed (summing up RMS values and calculating mean)
 CALIBRATION_THRESHOLD_FACTOR = 1.5  # factor the calculated mean RMS gets multiplied by to determine the auto detection threshold (after calibration)
 
-DEFAULT_LANGUAGE = "en-us"  # RFC5646 language tag, e.g. "en-us", "de-de", "fr-fr",... <http://stackoverflow.com/a/14302134>
+DEFAULT_LANGUAGE = "nl-NL"  # RFC5646 language tag, e.g. "en-us", "de-de", "fr-fr",... <http://stackoverflow.com/a/14302134>
 
 WRITE_WAV_FILE = False      # write the recorded audio to "out.wav" before sending it to google. intended for debugging purposes
 PRINT_RMS = False           # prints the calculated RMS value to the console, useful for setting the threshold
@@ -63,7 +63,7 @@ class SpeechRecognitionModule(naoqi.ALModule):
 
             # flag to indicate if auto speech detection is enabled
             self.isAutoDetectionEnabled = False
-            self.autoDetectionThreshold = 10 # TODO: find a default value that works fine so we don't need to calibrate every time
+            self.autoDetectionThreshold = 4 # TODO: find a default value that works fine so we don't need to calibrate every time
 
             # flag to indicate if we are calibrating
             self.isCalibrating = False
@@ -90,7 +90,7 @@ class SpeechRecognitionModule(naoqi.ALModule):
 
             print("Turning off builtin dialog engine")
             self.al = naoqi.ALProxy("ALAutonomousLife")
-            self.al.switchFocus('julia-8b4016/behavior_1')
+            # self.al.switchFocus('julia-8b4016/behavior_1')
             #self.al.switchFocus('nao_focus-e45990/behavior_1')
 
         except BaseException, err:
@@ -240,7 +240,7 @@ class SpeechRecognitionModule(naoqi.ALModule):
     def calcRMSLevel(self, data):
         rms = (sqrt(mean(square(data))))
         # TODO: maybe a log would be better for threshold?
-        #rms = 20 * np.log10(np.sqrt(np.sum(np.power(data, 2) / len(data))))
+        # rms = 20 * np.log10(np.sqrt(np.sum(np.power(data, 2) / len(data))))
         return rms
 
     def version( self ):

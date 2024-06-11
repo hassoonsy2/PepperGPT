@@ -1,0 +1,13 @@
+Metric,F-stat,p-value,Comparison Results
+smoothness,10.773796438777715,0.00174662110733678,"Multiple Comparison of Means - Tukey HSD, FWER=0.05
+==================================================
+group1 group2 meandiff p-adj  lower  upper  reject
+--------------------------------------------------
+OpenAI    RIK   0.8676 0.0017 0.3385 1.3967   True
+--------------------------------------------------"
+satisfaction,4.307718125337637,0.04238405292538455,"Multiple Comparison of Means - Tukey HSD, FWER=0.05
+==================================================
+group1 group2 meandiff p-adj  lower  upper  reject
+--------------------------------------------------
+OpenAI    RIK   0.5217 0.0424 0.0185 1.0248   True
+--------------------------------------------------"

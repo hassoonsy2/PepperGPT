@@ -1,0 +1,19 @@
+Metric,F-stat,p-value,Comparison Results
+smoothness,11.276185360263582,0.0013914850606710164," Multiple Comparison of Means - Tukey HSD, FWER=0.05 
+=====================================================
+group1   group2  meandiff p-adj  lower  upper  reject
+-----------------------------------------------------
+OpenAI TinyLlama  -0.7775 0.0014 -1.241 -0.314   True
+-----------------------------------------------------"
+satisfaction,13.719427070641437,0.0004751720097821299,"  Multiple Comparison of Means - Tukey HSD, FWER=0.05  
+=======================================================
+group1   group2  meandiff p-adj   lower   upper  reject
+-------------------------------------------------------
+OpenAI TinyLlama  -0.9299 0.0005 -1.4325 -0.4274   True
+-------------------------------------------------------"
+intearction,11.654990328133609,0.0011740798513506883,"  Multiple Comparison of Means - Tukey HSD, FWER=0.05  
+=======================================================
+group1   group2  meandiff p-adj   lower   upper  reject
+-------------------------------------------------------
+OpenAI TinyLlama  -0.7486 0.0012 -1.1875 -0.3097   True
+-------------------------------------------------------"

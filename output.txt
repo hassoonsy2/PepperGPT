@@ -1,0 +1,93 @@
+                        Metric     F-stat       p-value  \
+0              questions_count   4.718219  3.394562e-02   
+0        average_response_time  85.420109  5.294342e-13   
+0                 total_tokens  16.081060  1.757336e-04   
+0             mean_token_count  25.325228  4.995586e-06   
+0  conversation_length_seconds  30.352454  8.640449e-07   
+0                       gender  13.338557  5.600193e-04   
+0             tech_fimiliarity  19.439378  4.555585e-05   
+0                  intearction  11.654990  1.174080e-03   
+0                   smoothness  11.276185  1.391485e-03   
+0                 satisfaction  13.719427  4.751720e-04   
+
+                                  Comparison Results  
+0  [[group1, group2, meandiff, p-adj, lower, uppe...  
+0  [[group1, group2, meandiff, p-adj, lower, uppe...  
+0  [[group1, group2, meandiff, p-adj, lower, uppe...  
+0  [[group1, group2, meandiff, p-adj, lower, uppe...  
+0  [[group1, group2, meandiff, p-adj, lower, uppe...  
+0  [[group1, group2, meandiff, p-adj, lower, uppe...  
+0  [[group1, group2, meandiff, p-adj, lower, uppe...  
+0  [[group1, group2, meandiff, p-adj, lower, uppe...  
+0  [[group1, group2, meandiff, p-adj, lower, uppe...  
+0  [[group1, group2, meandiff, p-adj, lower, uppe...  
+Tukey HSD results for questions_count:
+  Multiple Comparison of Means - Tukey HSD, FWER=0.05  
+=======================================================
+group1   group2  meandiff p-adj   lower   upper  reject
+-------------------------------------------------------
+OpenAI TinyLlama  -1.8598 0.0339 -3.5738 -0.1459   True
+-------------------------------------------------------
+Tukey HSD results for average_response_time:
+Multiple Comparison of Means - Tukey HSD, FWER=0.05 
+====================================================
+group1   group2  meandiff p-adj lower  upper  reject
+----------------------------------------------------
+OpenAI TinyLlama   5.2466   0.0 4.1102 6.3829   True
+----------------------------------------------------
+Tukey HSD results for total_tokens:
+     Multiple Comparison of Means - Tukey HSD, FWER=0.05     
+=============================================================
+group1   group2   meandiff  p-adj    lower     upper   reject
+-------------------------------------------------------------
+OpenAI TinyLlama -1913.4972 0.0002 -2868.651 -958.3435   True
+-------------------------------------------------------------
+Tukey HSD results for mean_token_count:
+   Multiple Comparison of Means - Tukey HSD, FWER=0.05    
+==========================================================
+group1   group2   meandiff p-adj   lower    upper   reject
+----------------------------------------------------------
+OpenAI TinyLlama -135.3136   0.0 -189.1366 -81.4907   True
+----------------------------------------------------------
+Tukey HSD results for conversation_length_seconds:
+   Multiple Comparison of Means - Tukey HSD, FWER=0.05    
+==========================================================
+group1   group2   meandiff p-adj   lower    upper   reject
+----------------------------------------------------------
+OpenAI TinyLlama -142.1574   0.0 -193.8079 -90.5068   True
+----------------------------------------------------------
+Tukey HSD results for gender:
+  Multiple Comparison of Means - Tukey HSD, FWER=0.05  
+=======================================================
+group1   group2  meandiff p-adj   lower   upper  reject
+-------------------------------------------------------
+OpenAI TinyLlama  -0.3826 0.0006 -0.5924 -0.1729   True
+-------------------------------------------------------
+Tukey HSD results for tech_fimiliarity:
+ Multiple Comparison of Means - Tukey HSD, FWER=0.05  
+======================================================
+group1   group2  meandiff p-adj  lower   upper  reject
+------------------------------------------------------
+OpenAI TinyLlama   -1.059   0.0 -1.5397 -0.5782   True
+------------------------------------------------------
+Tukey HSD results for intearction:
+  Multiple Comparison of Means - Tukey HSD, FWER=0.05  
+=======================================================
+group1   group2  meandiff p-adj   lower   upper  reject
+-------------------------------------------------------
+OpenAI TinyLlama  -0.7486 0.0012 -1.1875 -0.3097   True
+-------------------------------------------------------
+Tukey HSD results for smoothness:
+ Multiple Comparison of Means - Tukey HSD, FWER=0.05 
+=====================================================
+group1   group2  meandiff p-adj  lower  upper  reject
+-----------------------------------------------------
+OpenAI TinyLlama  -0.7775 0.0014 -1.241 -0.314   True
+-----------------------------------------------------
+Tukey HSD results for satisfaction:
+  Multiple Comparison of Means - Tukey HSD, FWER=0.05  
+=======================================================
+group1   group2  meandiff p-adj   lower   upper  reject
+-------------------------------------------------------
+OpenAI TinyLlama  -0.9299 0.0005 -1.4325 -0.4274   True
+-------------------------------------------------------
