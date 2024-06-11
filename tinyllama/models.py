@@ -56,9 +56,9 @@ class TinyLlamaModel:
         self.history.append({'role':'user','content':inputText})
 
         response = self.client.chat(
-        model="phi3:mini",
+        model="pepper_hublab_phi3mini:latest",
         messages=self.history,
-        options = {'temperature' : 0.7,'num_predict':50},
+        # options = {'temperature' : 0.7,'num_predict':30},
 
         )
         print(response['message']['content'])
