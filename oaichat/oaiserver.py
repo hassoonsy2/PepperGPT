@@ -65,6 +65,7 @@ def main():
     server.start()
     try: 
         while True:
+            print('test')
             i = input('Enter q to quit. > ')
             if i == 'q': break
     finally:

@@ -21,7 +21,7 @@ def main(session):
         tabletService.enableWifi()
 
         # URL of the video to play
-        video_url = "https://rr3---sn-5hne6nsk.googlevideo.com/videoplayback?expire=1713971372&ei=TMwoZtz2HrnB6dsPseyC-As&ip=193.32.8.36&id=o-AB0sF8xhVOtpDmicgrRa3T0Z4J1WVfBGrc7E2ohAQEX1&itag=22&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&mh=y4&mm=31%2C29&mn=sn-5hne6nsk%2Csn-5hnednsz&ms=au%2Crdu&mv=m&mvi=3&pl=24&gcr=nl&initcwndbps=296250&spc=UWF9f8zd0L9XgyMBJIvgUMGqZa6-Czkr_7Wk&vprv=1&svpuc=1&mime=video%2Fmp4&cnr=14&ratebypass=yes&dur=167.648&lmt=1706010379068705&mt=1713949491&fvip=4&c=ANDROID&txp=4532434&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cgcr%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Ccnr%2Cratebypass%2Cdur%2Clmt&sig=AJfQdSswRgIhAKjqp_s69uTM8FOcGEA-e9M6LNvOkemt9um1g7wZzBeuAiEA3QhvQfT3aQ21iaDefFqaSe_IU_X27M9kgWphpnpoVe8%3D&lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Cinitcwndbps&lsig=AHWaYeowRgIhAPblzxuWfCgT_qKSL2ChdBqYaKp_ZEz39okv4Q5Cnfm3AiEA8ETySiBBV9yAyHBxwFPqz-rJ-qNBnLSYUWIrnGFhwas%3D&title=Iggy%20Azalea%20-%20Kream%20ft.%20Tyga"
+        video_url = "https://youtu.be/dQw4w9WgXcQ?si=RtMR6vXY0RJAhsaK"
 
         # Start playing video
         if tabletService.playVideo(video_url):
@@ -62,7 +62,7 @@ def main(session):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--ip", type=str, default="127.0.0.1",
+    parser.add_argument("--ip", type=str, default="192.168.1.140",
                         help="Robot IP address. On robot or Local Naoqi: use '127.0.0.1'.")
     parser.add_argument("--port", type=int, default=9559,
                         help="Naoqi port number")
